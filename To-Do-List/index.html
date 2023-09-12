@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>To-Do List App</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+
+    <div class="task-input-container">
+      <input type="text" id="taskInput" placeholder="Enter a task..." />
+      <button id="regularTaskBtn" class="task-option-btn">Regular</button>
+      <button id="importantTaskBtn" class="task-option-btn">Important</button>
+      <button id="addTaskBtn">Add Task</button>
+    </div>
+
+    <p id="mainErrorMessage" class="error-label">Can't add an empty task.</p>
+
+    <ul id="taskList"></ul>
+    <div id="deleteAllBtnContainer" class="delete-all-container"></div>
+  </div>
+
+</body>
+
+</html>
