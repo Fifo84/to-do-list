@@ -1,12 +1,10 @@
-// Interface for a single task
 interface Task {
   id: number;
   name: string;
-  important: boolean; // Add this line
+  important: boolean;
   createdDate: string;
 }
 
-// Get elements from the DOM
 const taskInput = document.getElementById("taskInput") as HTMLInputElement;
 const regularTaskBtn = document.getElementById(
   "regularTaskBtn"
@@ -22,29 +20,23 @@ const deleteAllBtnContainer = document.getElementById(
 
 let isImportantTask = false;
 
-// event listeners
-// Event listeners for task option buttons
 regularTaskBtn.addEventListener("click", setRegularTaskOption);
 importantTaskBtn.addEventListener("click", setImportantTaskOption);
 
-// Function to set task option to regular
 function setRegularTaskOption(): void {
   isImportantTask = false;
   regularTaskBtn.classList.add("active");
   importantTaskBtn.classList.remove("active");
 }
 
-// Function to set task option to important
 function setImportantTaskOption(): void {
   isImportantTask = true;
   importantTaskBtn.classList.add("active");
   regularTaskBtn.classList.remove("active");
 }
 
-// Array to store tasks
 let tasks: Task[] = [];
 
-// Function to render tasks in the list
 function renderTasks(): void {
   taskList.innerHTML = "";
 
@@ -61,7 +53,7 @@ function renderTasks(): void {
     <p class="error-label">Can't edit with an empty name.</p> `;
 
     if (task.important) {
-      li.classList.add("important-task"); // Add important task class
+      li.classList.add("important-task");
     }
 
     taskList.appendChild(li);
@@ -80,13 +72,11 @@ function renderTasks(): void {
   renderDeleteAllButton();
 }
 
-// Function to save tasks to local storage
 function updateLocalStorage(): void {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   console.log("Saved to Local Storage:", tasks);
 }
 
-// Function to load tasks from local storage
 function loadTasksFromLocalStorage(): void {
   const savedTasks = localStorage.getItem("tasks");
   if (savedTasks) {
@@ -96,7 +86,7 @@ function loadTasksFromLocalStorage(): void {
     setRegularTaskOption();
   }
 
-  renderTasks(); // Render tasks with appropriate styles
+  renderTasks();
 }
 
 const mainErrorMessage = document.getElementById(
@@ -107,7 +97,7 @@ const mainErrorMessage = document.getElementById(
 function addTask(): void {
   const taskName = taskInput.value.trim();
   if (taskName !== "") {
-    mainErrorMessage.style.display = "none"; // Hide error message
+    mainErrorMessage.style.display = "none";
 
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString("en-GB");
@@ -115,21 +105,19 @@ function addTask(): void {
     const newTask: Task = {
       id: Date.now(),
       name: taskName,
-      important: isImportantTask, // Add the important flag
-      createdDate: formattedDate, // Add a timestamp
+      important: isImportantTask,
+      createdDate: formattedDate,
     };
 
     tasks.push(newTask);
-    // Store the new task temporarily (not in the tasks array)
-    // localStorage.setItem(`temp-task`, JSON.stringify(newTask));
 
     renderTasks();
     taskInput.value = "";
   } else {
-    mainErrorMessage.style.display = "block"; // Show error message
-    taskInput.classList.add("shake"); // Add shake animation class
+    mainErrorMessage.style.display = "block";
+    taskInput.classList.add("shake");
     setTimeout(() => {
-      taskInput.classList.remove("shake"); // Remove shake animation class after animation is done
+      taskInput.classList.remove("shake");
     }, 500);
   }
 }
@@ -141,7 +129,6 @@ taskInput.addEventListener("keydown", (event: KeyboardEvent) => {
   }
 });
 
-// Function to delete a task
 function deleteTask(event: Event): void {
   const target = event.target as HTMLElement;
   const taskId = parseInt(target.getAttribute("data-id") as string);
@@ -155,7 +142,6 @@ function saveAllTasksToLocalStorage() {
   alert("All tasks saved to local storage.");
 }
 
-// Function to edit a task
 function editTask(event: Event): void {
   const target = event.target as HTMLElement;
   const li = target.parentElement!.parentElement!;
@@ -215,9 +201,7 @@ function deleteAllTasks(): void {
   }
 }
 
-// Event listeners
 addTaskBtn.addEventListener("click", addTask);
 
-// Load tasks from local storage on page load
 loadTasksFromLocalStorage();
 renderTasks();

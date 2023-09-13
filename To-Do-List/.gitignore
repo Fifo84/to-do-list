@@ -9,13 +9,14 @@ lerna-debug.log*
 
 
 
-gitignore
+
 node_modules
 dist
 dist-ssr
 *.local
 
 # Editor directories and files
+.gitignore
 .vscode/*
 !.vscode/extensions.json
 .idea
