@@ -81,14 +81,14 @@ li {
 }
 
 li.important-task {
-  border: 2px solid #f39c12; /* Border color for important tasks */
-  background-color: #fff3cd; /* Background color for important tasks */
-  font-weight: bold; /* Add bold font weight for important tasks */
+  border: 2px solid #f39c12;
+  background-color: #fff3cd;
+  font-weight: bold;
 }
 
 li.important-task:hover {
-  border: 2px solid #e74c3c; /* Border color for important tasks on hover */
-  background-color: #ffc107; /* Background color for important tasks on hover */
+  border: 2px solid #e74c3c;
+  background-color: #ffc107;
 }
 
 li:hover {
@@ -120,14 +120,6 @@ li:hover {
 .delete-btn:hover {
   color: #007bff;
 }
-
-/* .error-message {
-  display: none;
-  color: red;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 10px;
-} */
 
 .error-label {
   display: none;
