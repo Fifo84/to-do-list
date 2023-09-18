@@ -158,16 +158,16 @@ function editTask(event: Event): void {
       const taskToUpdate = tasks.find((task) => task.id === taskId);
       if (taskToUpdate) {
         taskToUpdate.name = updatedName;
-        editInput.style.display = "none"; // Hide the edit input
+        editInput.style.display = "none";
         renderTasks();
-        errorLabel.style.display = "none"; // Hide error message
+        errorLabel.style.display = "none";
       }
     } else {
-      editInput.style.display = "none"; // Hide the edit input
-      errorLabel.style.display = "block"; // Show error message
-      li.classList.add("shake"); // Add shake animation class
+      editInput.style.display = "none";
+      errorLabel.style.display = "block";
+      li.classList.add("shake");
       setTimeout(() => {
-        li.classList.remove("shake"); // Remove shake animation class after animation is done
+        li.classList.remove("shake");
       }, 500);
     }
   });
